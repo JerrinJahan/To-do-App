@@ -13,7 +13,7 @@ let createTask = function(task) {
 let listItem = document.createElement('li');
 let checkBox = document.createElement('input');
 let label = document.createElement('label');
-label.innertext = task;
+label.innerText = task;
 checkBox.type = 'checkBox';
 
 listItem.appendChild(checkBox);
@@ -32,7 +32,7 @@ let listItem = createTask(newTask.value);
 todolist.appendChild(listItem);
 newTask.value = '';
 
-bindIncompleteIteam(listItem, completeTask);
+bindIncompleteItem(listItem, completeTask);
 
 }
 
@@ -49,7 +49,7 @@ listItem.appendChild(deleteButton);
 let checkBox = document.querySelector('input [type = "checkBox"]');
 checkBox.remove();
 completelist.appendChild(listItem);
-bindCompleteIteam(listItem, deleteTask);
+bindCompleteItem(listItem, deleteTask);
 
 }
 
@@ -66,7 +66,7 @@ ul.removeChild(listItem);
 
 
 //5
-let bindIncompleteIteam = function(taskItem, checkBoxClick){
+let bindIncompleteItem = function(taskItem, checkBoxClick){
 
 let checkBox = taskItem.querySelector('input[type = "checkBox"]');
 checkBox.onChange = checkBoxClick;
@@ -75,10 +75,21 @@ checkBox.onChange = checkBoxClick;
 
 
 //6
-let bindCompleteIteam = function(taskItem, deleteClick){
+let bindCompleteItem = function(taskItem, deleteClick){
 let deleteButton = taskitem.querySelector('.delete');
-deleteButton.onclick = bindCompleteIteam;
+deleteButton.onclick = deleteClick;
 }
 
 
 form.addEventListener('submit', addTask);
+
+
+//loop to delete initial values
+
+for(let i=0; i< todolist.children.length; i++ ) {
+bindIncompleteItem(todolist.children[i], completeTask);
+}
+
+for(let i=0; i< completelist.children.length; i++ ) {
+    bindCompleteItem(completelist.children[i], deleteTask);
+}
