@@ -57,7 +57,7 @@ bindCompleteItem(listItem, deleteTask);
 //4
 let deleteTask = function(){
 let listItem = this.parentNode;
-let ul = listitem.parentNode;
+let ul = listItem.parentNode;
 ul.removeChild(listItem);
 
 
@@ -76,7 +76,7 @@ checkBox.onChange = checkBoxClick;
 
 //6
 let bindCompleteItem = function(taskItem, deleteClick){
-let deleteButton = taskitem.querySelector('.delete');
+let deleteButton = taskItem.querySelector('.delete');
 deleteButton.onclick = deleteClick;
 }
 
